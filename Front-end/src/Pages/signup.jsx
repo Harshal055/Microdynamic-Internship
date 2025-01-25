@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,7 +9,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
 
   const handleToggle = (form) => {
@@ -22,6 +23,7 @@ const Signup = () => {
     setName("");
     setEmailError("");
     setPasswordError("");
+    setServerError("");
   };
 
   const handleEmailChange = (e) => {
@@ -50,11 +52,30 @@ const Signup = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert(isLogin ? "Login successful!" : "Signup successful!");
-      resetForm();
+      if (!isLogin) {
+        try {
+          const response = await axios.post(
+            "http://localhost:8081/signup",
+            { name, email, password },
+            { headers: { "Content-Type": "application/json" } }
+          );
+          if (response.data.success) {
+            alert("Signup successful!");
+            resetForm();
+            setIsLogin(true); // Redirect to the login form after signup
+          } else {
+            setServerError(response.data.message || "Signup failed.");
+          }
+        } catch (error) {
+          console.error("Error during signup:", error);
+          setServerError("An error occurred. Please try again.");
+        }
+      } else {
+        alert("Login functionality not implemented yet.");
+      }
     }
   };
 
@@ -88,7 +109,6 @@ const Signup = () => {
                 Signup
               </button>
             </div>
-            {/* Slider */}
             <div
               className={`absolute bottom-0 left-0 w-1/2 h-1 bg-gray-500 rounded transition-transform duration-300 ${
                 isLogin ? "transform translate-x-0" : "transform translate-x-full"
@@ -139,6 +159,9 @@ const Signup = () => {
                 <p className="text-sm text-red-500 mt-1">{passwordError}</p>
               )}
             </div>
+            {serverError && (
+              <p className="text-sm text-red-500 text-center">{serverError}</p>
+            )}
             {isLogin && (
               <a
                 href="#"
