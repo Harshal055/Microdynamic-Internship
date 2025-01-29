@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 
 const Signup = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
   const [name, setName] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [serverError, setServerError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
   const navigate = useNavigate();
 
   const handleToggle = (form) => {
@@ -20,6 +24,7 @@ const Signup = () => {
   const resetForm = () => {
     setEmail("");
     setPassword("");
+    setRePassword("");
     setName("");
     setEmailError("");
     setPasswordError("");
@@ -49,14 +54,19 @@ const Signup = () => {
       isValid = false;
     }
 
+    if (!isLogin && password !== rePassword) {
+      setPasswordError("Passwords do not match.");
+      isValid = false;
+    }
+
     return isValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      if (!isLogin) {
-        try {
+      try {
+        if (!isLogin) {
           const response = await axios.post(
             "http://localhost:8081/signup",
             { name, email, password },
@@ -65,19 +75,33 @@ const Signup = () => {
           if (response.data.success) {
             alert("Signup successful!");
             resetForm();
-            setIsLogin(true); // Redirect to the login form after signup
+            setIsLogin(true);
           } else {
             setServerError(response.data.message || "Signup failed.");
           }
-        } catch (error) {
-          console.error("Error during signup:", error);
-          setServerError("An error occurred. Please try again.");
+        } else {
+          const response = await axios.post("http://localhost:8081/login", {
+            email,
+            password,
+          });
+          if (response.data.success) {
+            navigate("/LanguagePage"); 
+          } else {
+            setServerError(response.data.message || "Invalid credentials.");
+          }
         }
-      } else {
-        alert("Login functionality not implemented yet.");
+      } catch (error) {
+        console.error("API Error:", error);
+        if (error.response && error.response.data && error.response.data.message) {
+          setServerError(error.response.data.message);
+        } else {
+          setServerError("A network error occurred. Please try again later.");
+        }
       }
     }
   };
+
+
 
   return (
     <div className="min-h-screen bg-gray-800 flex flex-col items-center justify-center relative">
@@ -145,9 +169,9 @@ const Signup = () => {
                 <p className="text-sm text-red-500 mt-1">{emailError}</p>
               )}
             </div>
-            <div>
+            <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={password}
                 onChange={handlePasswordChange}
@@ -155,10 +179,34 @@ const Signup = () => {
                   passwordError ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
                 }`}
               />
-              {passwordError && (
-                <p className="text-sm text-red-500 mt-1">{passwordError}</p>
-              )}
+              <span
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </span>
             </div>
+            {!isLogin && (
+              <div className="relative">
+                <input
+                  type={showRePassword ? "text" : "password"}
+                  placeholder="Re-enter Password"
+                  value={rePassword}
+                  onChange={(e) => setRePassword(e.target.value)}
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <span
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                  onClick={() => setShowRePassword(!showRePassword)}
+                >
+                  {showRePassword ? (
+                    <AiFillEyeInvisible size={20} />
+                  ) : (
+                    <AiFillEye size={20} />
+                  )}
+                </span>
+              </div>
+            )}
             {serverError && (
               <p className="text-sm text-red-500 text-center">{serverError}</p>
             )}
@@ -194,3 +242,4 @@ const Signup = () => {
 };
 
 export default Signup;
+
