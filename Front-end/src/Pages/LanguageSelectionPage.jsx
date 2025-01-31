@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const LanguageSelectionPage = () => {
@@ -46,7 +46,7 @@ const LanguageSelectionPage = () => {
       name: "Swift",
       description: "Used for iOS and macOS development",
       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPoi0fALopQqvBEMq6A4-EETjJ_WjVhycJg&s",
-    }
+    },
   ];
 
   const handleSelectLanguage = (language) => {
@@ -54,7 +54,7 @@ const LanguageSelectionPage = () => {
   };
 
   const handleStartQuiz = (language) => {
-    const formattedName = language.name.toLowerCase().replace(/\s+/g, '');
+    const formattedName = language.name.toLowerCase().replace(/\s+/g, "");
     navigate(`/quiz/${formattedName}`);
   };
 
@@ -65,8 +65,9 @@ const LanguageSelectionPage = () => {
         <div className="min-h-screen flex flex-col justify-center items-center">
           <div className="w-full max-w-4xl p-6 mt-16">
             <h1 className="text-4xl text-white font-bold mb-8 text-center">
-              Select a Programming Language
+              Select a Programming Language For
             </h1>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
               {languages.map((language, index) => (
                 <div
@@ -77,8 +78,8 @@ const LanguageSelectionPage = () => {
                   <div className="flip-card-inner">
                     <div className="flip-card-front bg-gray-800">
                       <div className="icon-wrapper p-4">
-                        <img 
-                          src={language.icon} 
+                        <img
+                          src={language.icon}
                           alt={`${language.name} logo`}
                           className="w-16 h-16 mx-auto"
                         />

@@ -15,11 +15,15 @@ import LanguageSelectionPage from "./Pages/LanguageSelectionPage";
 import Quiz from "./Components/Quiz";
 import ResultPage from "./Pages/ResultPage";
 import Overview from "./Components/Overview";
+import Profile from "./Components/Profile";
 
 function ConditionalNavbar() {
   const location = useLocation();
   const hideNavbar =
-    location.pathname === "/login" || location.pathname.includes("/quiz")|| location.pathname.includes("results");
+    location.pathname === "/login" ||
+    location.pathname.includes("/quiz") ||
+    location.pathname.includes("/profile")
+    ||location.pathname.includes("results");
   return !hideNavbar && <Navbar />;
 }
 
@@ -28,10 +32,12 @@ function App() {
     <Router>
       <ConditionalNavbar />
       <Routes>
+        <Route path="/profile" element={<Profile />} />
+
         <Route path="/login" element={<Signup />} />
         <Route path="/LanguagePage" element={<LanguageSelectionPage />} />
         <Route path="/quiz/:language" element={<Quiz />} />
-        
+
         <Route path="/results" element={<ResultPage />} />
         <Route
           path="/"
