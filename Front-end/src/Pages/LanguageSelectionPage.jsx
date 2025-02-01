@@ -18,7 +18,7 @@ const LanguageSelectionPage = () => {
       icon: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
     },
     {
-      name: "Java",
+      name: "Java", 
       description: "Great for OOP",
       icon: "https://images.javatpoint.com/core/images/java-logo1.png",
     },
@@ -33,9 +33,9 @@ const LanguageSelectionPage = () => {
       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfKZdbmTKy7h3cd-gxj7dKBQpTUJkt5tpmtQ&s",
     },
     {
-      name: "Ruby",
-      description: "Great for web development",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg",
+      name: "Sql",
+      description: "programming language for storing and processing information in a relational database",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/7/7b/MySQL_Dolphin.jpg",
     },
     {
       name: "PHP",
@@ -46,6 +46,26 @@ const LanguageSelectionPage = () => {
       name: "Swift",
       description: "Used for iOS and macOS development",
       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPoi0fALopQqvBEMq6A4-EETjJ_WjVhycJg&s",
+    },
+    {
+      name: "Swift",
+      description: "Used for iOS and macOS development",
+      icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPoi0fALopQqvBEMq6A4-EETjJ_WjVhycJg&s",
+    },
+    {
+      name: "Swift",
+      description: "Used for iOS and macOS development",
+      icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPoi0fALopQqvBEMq6A4-EETjJ_WjVhycJg&s",
+    },
+    {
+      name: "Coming soon",
+      description: "",
+      icon: "https://img.freepik.com/free-vector/coming-soon-banner-with-focus-lights_1017-33739.jpg?t=st=1738392724~exp=1738396324~hmac=734843e536dcba5f45a58f22161473d40e8a66eb6ddf6207f43930e988a63e1d&w=740",
+    },
+    {
+      name: "Coming Soon",
+      description: "",
+      icon: "https://img.freepik.com/free-vector/coming-soon-banner-with-focus-lights_1017-33739.jpg?t=st=1738392724~exp=1738396324~hmac=734843e536dcba5f45a58f22161473d40e8a66eb6ddf6207f43930e988a63e1d&w=740",
     },
   ];
 
