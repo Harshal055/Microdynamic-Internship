@@ -27,7 +27,7 @@ mongoose.connect(mongoURI)
 
 // User Schema and Model
 const userSchema = new mongoose.Schema({
-  name: String,
+  name: {type:String, unique:true,required: true},
   email: { type: String, required: true, unique: true, lowercase: true },
   passwordHash: { type: String, required: true }
 });
@@ -43,11 +43,12 @@ app.post("/signup", async (req, res) => {
     await newUser.save();
     res.json({ success: true, message: "Signup successful!" });
   } catch (error) {
-    if (error.code === 11000 && error.keyPattern.email) {
+    if (error.code === 11000 && error.keyPattern.name) {
+      res.status(400).json({ success: false, message: "User name already in use." });
+    } else if (error.code === 11000 && error.keyPattern.email) {
       res.status(400).json({ success: false, message: "Email already in use." });
     } else {
-      console.error("Signup error:", error);
-      res.status(500).json({ success: false, message: "Signup failed. Please try again later." });
+      res.status(500).json({ success: false, message: "An error occurred." });
     }
   }
 });
@@ -63,7 +64,7 @@ app.post("/login", async (req, res) => {
     if (!isMatch) return res.status(401).json({ success: false, message: "Incorrect password." });
 
     res.json({
-      success: true,
+      success: true,  
       userName: user.name,
       userEmail: user.email,
       redirectUrl: "/LanguagePage"

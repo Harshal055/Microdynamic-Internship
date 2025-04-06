@@ -7,23 +7,25 @@ import {
 } from "react-router-dom";
 import Navbar from "./Pages/Navbar";
 import Signup from "./Pages/signup";
-import HeroSection from "./Components/HeroSection";
-import ChallengesSection from "./Components/ChallengesSection";
-import CommunitySection from "./Components/CommunitySection";
-import Footer from "./Components/Footer";
+
 import LanguageSelectionPage from "./Pages/LanguageSelectionPage";
 import Quiz from "./Components/Quiz";
 import ResultPage from "./Pages/ResultPage";
 import Overview from "./Components/Overview";
 import Profile from "./Components/Profile";
+import Challange from "./Pages/Challange";
+import Explore from "./Pages/Explore";
+import Contact from "./Pages/contact";
+import Contest from "./Pages/contest";
 
 function ConditionalNavbar() {
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/login" ||
     location.pathname.includes("/quiz") ||
-    location.pathname.includes("/profile")
-    ||location.pathname.includes("results");
+    location.pathname.includes("/profile") ||
+    location.pathname.includes("results");
+    location.pathname.includes("/contact");
   return !hideNavbar && <Navbar />;
 }
 
@@ -39,18 +41,16 @@ function App() {
         <Route path="/quiz/:language" element={<Quiz />} />
 
         <Route path="/results" element={<ResultPage />} />
-        <Route
-          path="/"
-          element={
-            <>
-              <HeroSection />
-              <Overview />
-              <ChallengesSection />
-              <CommunitySection />
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/Challange" element={<Challange />} />
+      
+        <Route path="/Explore" element={<Explore />}/>
+        <Route path="/" element={<Explore />}/>
+
+        <Route path="/contact" element={<Contact />}/>
+        <Route path="/contest" element={<Contest />}/>
+
+        
+        
       </Routes>
     </Router>
   );

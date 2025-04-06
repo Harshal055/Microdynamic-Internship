@@ -16,7 +16,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="bg-gray-900 text-white py-30">
+    <section className="bg-black text-white py-50">
       <div className="container mx-auto text-center px-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
           Welcome to Code guru

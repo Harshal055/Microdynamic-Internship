@@ -1,0 +1,46 @@
+{
+    "challenges": [
+      {
+        "id": 1,
+        "imageUrl": "https://img.freepik.com/free-vector/gradient-top-view-laptop-technology-background_52683-4503.jpg?t=st=1738405738~exp=1738409338~hmac=37e32cae80bb35e614c5533c854e16d18986243cfc9f2396f8a198700e68ea09&w=1060",
+        "imageDescription": "A gradient top view laptop technology background representing Challenge 1",
+        "title": "Challenge 1: The Beginning",
+        "description": "This challenge focuses on the fundamentals of the task at hand. Participants will learn the basics and set the groundwork for future challenges."
+      },
+      {
+        "id": 2,
+        "imageUrl": "https://img.freepik.com/free-vector/gradient-top-view-laptop-technology-background_52683-4505.jpg?t=st=1738405773~exp=1738409373~hmac=a14607c270c231b95b4b0b06c1866b7e8596994953884818a47ccf63e5b62026&w=1060",
+        "imageDescription": "A gradient top view laptop technology background representing Challenge 2",
+        "title": "Challenge 2: Intermediate Skills",
+        "description": "In this challenge, participants will build on their foundational knowledge and tackle more complex tasks, enhancing their skills and confidence."
+      },
+      {
+        "id": 3,
+        "imageUrl": "https://img.freepik.com/free-vector/gradient-isometric-laptop-technology-background_52683-4501.jpg?t=st=1738405810~exp=1738409410~hmac=c66949795b2910fe5b2d2e5e568e23b67ef58d1f4e8dfcdf2934f2bc980b28ab&w=1060",
+        "imageDescription": "A gradient isometric laptop technology background representing Challenge 3",
+        "title": "Challenge 3: Advanced Techniques",
+        "description": "This challenge introduces advanced techniques and strategies. Participants will be pushed to think critically and creatively to solve problems."
+      },
+      {
+        "id": 4,
+        "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmZhcWptanJuYmt5ZWRzajd6MWw4aDl4cWllc2xiejE3MHp2MXVrcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fR4nTITFb39YljKDJ7/giphy.gif",
+        "imageDescription": "A GIF representing Challenge 4",
+        "title": "Challenge 4: Real-World Application",
+        "description": "Participants will apply their skills to real-world scenarios, working on projects that simulate actual challenges they may face in their field."
+      },
+      {
+        "id": 5,
+        "imageUrl": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWxyejlnMWZneW1jMGw0dmwyMGQxcjlvdTlkYjV0YW1kdjAwNjJuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RCHKBAEAafkZkYIwAS/giphy.gif",
+        "imageDescription": "A placeholder image representing Challenge 5",
+        "title": "Challenge 5: Team Collaboration",
+        "description": "This challenge emphasizes teamwork and collaboration. Participants will work in groups to tackle challenges, fostering communication and cooperation."
+      },
+      {
+        "id": 6,
+        "imageUrl": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWhydzNudHI1dGpqMmlwYXl4Z3NkbGxkbGZvanIzazA1eHc4ZmdldCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsCevAab5ufj37BeGR/giphy.gif",
+        "imageDescription": "A placeholder image representing Challenge 6",
+        "title": "Challenge 6: Final Project",
+        "description": "In the final challenge, participants will showcase everything they've learned by completing a comprehensive project that demonstrates their skills and knowledge."
+      }
+    ]
+  }

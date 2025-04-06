@@ -67,15 +67,17 @@ function Navbar() {
               Code Guru
             </span>
           </div>
-
+<div>
+  
+</div>
           {/* Navigation Links */}
           <ul className="flex space-x-9">
-            {["/explore", "/problems", "/contest", "/contact", "/LanguagePage"].map((path, index) => (
+            {["/Explore", "/Challange", "/contest", "/contact", "/LanguagePage"].map((path, index) => (
               <li key={index}>
-                <a
-                  href="#" // Prevent default behavior
+                <a 
+                  href='/' // Prevent default behavior
                   onClick={(e) => {
-                    e.preventDefault(); // Prevent page reload
+                    e.preventDefault(); // Preve nt page reload
                     handleNavigation(path);
                   }}
                   className="text-white hover:text-gray-300 drop-shadow-lg transition-colors cursor-pointer"
